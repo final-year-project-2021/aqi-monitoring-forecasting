@@ -23,3 +23,16 @@ Resources:
           Properties:
             Schedule: rate(1 hour)
 
+
+  ForecastFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: Forecast/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 hour)
+
