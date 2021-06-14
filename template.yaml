@@ -2,23 +2,36 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
   aqi-app
-
-  Sample SAM Template for aqi-app
+  SAM Template for aqi-app
 
 
 Globals:
   Function:
-    Timeout: 3
+    Runtime: python3.8
+    Timeout: 180
+    Policies: AmazonDynamoDBFullAccess
+    Environment:
+      Variables:
+        TABLE_NAME: data-table
 
-Resources:
+Resources:  
+  SensorsDataTable:
+  Type: AWS::Serverless::SimpleTable
+  Properties:
+    PrimaryKey:
+      Name: id
+      Type: String   
+    TableName: SensorsDataTable
+    Tags: 
+      Project: aqi-app
+
   ScrapperFunction:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: Scrapper/
-      Handler: app.lambda_handler
-      Runtime: python3.8
+      Handler: app.lambda_handler      
       Events:
-        HelloWorld:
+        Scheduler:
           Type: Schedule
           Properties:
             Schedule: rate(1 hour)
@@ -28,10 +41,9 @@ Resources:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: Forecast/
-      Handler: app.lambda_handler
-      Runtime: python3.8
+      Handler: app.lambda_handler      
       Events:
-        HelloWorld:
+        Scheduler:
           Type: Schedule
           Properties:
             Schedule: rate(1 hour)
