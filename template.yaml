@@ -25,17 +25,7 @@ Resources:
     Tags: 
       Project: aqi-app
 
-  ScrapperFunction:
-    Type: AWS::Serverless::Function 
-    Properties:
-      CodeUri: Scrapper/
-      Handler: app.lambda_handler      
-      Events:
-        Scheduler:
-          Type: Schedule
-          Properties:
-            Schedule: rate(1 hour)
-
+  
 
   ForecastFunction:
     Type: AWS::Serverless::Function 
