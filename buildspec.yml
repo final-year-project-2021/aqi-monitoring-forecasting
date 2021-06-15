@@ -1,8 +1,15 @@
 version: 0.2
 phases:
+
   install:
     runtime-versions:
         python: 3.8
+
+  pre_build:
+    commands:
+      - pip install -r ./Forecast/requirements.txt ./Forecast/Utils
+      - pip install -r ./Scrapper/requirements.txt ./Scrapper/Utils
+
   build:
     commands:
       - sam package --template-file template.yaml --s3-bucket <BUCKET_NAME> --output-template-file packaged-template.yaml

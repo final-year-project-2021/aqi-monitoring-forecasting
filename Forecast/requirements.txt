@@ -1,0 +1,5 @@
+requests
+pandas==1.2.4
+tensorflow==2.3.0
+tsmoothie
+pickle5
