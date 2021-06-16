@@ -12,14 +12,14 @@ Globals:
     Policies: AmazonDynamoDBFullAccess
     Environment:
       Variables:
-        TABLE_NAME: data-table
+        TABLE_NAME: SensorsDataTable
 
 Resources:  
   SensorsDataTable:
   Type: AWS::Serverless::SimpleTable
   Properties:
     PrimaryKey:
-      Name: id
+      Name: Date-Time
       Type: String   
     TableName: SensorsDataTable
     Tags: 
@@ -27,14 +27,14 @@ Resources:
 
   
 
-  ForecastFunction:
+  ScrapperFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: Forecast/
+      CodeUri: Scrapper/
       Handler: app.lambda_handler      
       Events:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: rate(1 hour)
+            Schedule: rate(10 minutes)
 
