@@ -1,5 +1,5 @@
 import json
-from utils.webscrap import scrapper
+from Utils.webscrap import scrapper
 from decimal import Decimal
 import boto3, os
 
