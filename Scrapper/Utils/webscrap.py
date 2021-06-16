@@ -1,10 +1,10 @@
 import json
 import requests
-import hashlib
 import base64
 import datetime
-import boto3, os
-import numpy as np
+import sys
+sys.path.append(".")
+import Scrapper.Utils.Dependencies.numpy as np
 
 
 def base64_encode(string):

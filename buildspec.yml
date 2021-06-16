@@ -7,12 +7,15 @@ phases:
 
   pre_build:
     commands:
-      - pip install -r ./Forecast/requirements.txt ./Forecast/Utils
-      - pip install -r ./Scrapper/requirements.txt ./Scrapper/Utils
+      - pip install -r ./Forecast/requirements.txt -t ./Forecast/Utils/Dependencies
+      - pip install -r ./Scrapper/requirements.txt -t ./Scrapper/Utils/Dependencies
 
   build:
     commands:
-      - sam package --template-file template.yaml --s3-bucket aqi-app-bucket --output-template-file packaged-template.yaml
+      - sam package --template-file template.yaml \
+        --s3-bucket aqi-app-bucket \
+        --output-template-file packaged-template.yaml
+        
 artifacts:
   files:
     - template.yaml

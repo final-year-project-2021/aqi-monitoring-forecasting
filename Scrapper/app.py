@@ -9,7 +9,7 @@ import boto3, os
 dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table(os.getenv("TABLE_NAME"))
 
-def lambda_handler():
+def lambda_handler(event, context):
     res_list = scrapper()
     with table.batch_writer() as batch:
         for i in range(4):
