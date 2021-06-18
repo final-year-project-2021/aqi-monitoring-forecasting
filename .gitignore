@@ -1,8 +1,12 @@
 /events
 /.vscode
+/Scrapper/*
 !/Scrapper/__init__.py
 !/Scrapper/app.py
 !/Scrapper/webscrap.py
 !/Scrapper/requirements.txt
-/Scrapper/*
-
+/Forecast/*
+!/Forecast/Artefacts/*
+!/Forecast/app.py
+!/Forecast/requirements.txt
+!/Forecast/__init__.py
