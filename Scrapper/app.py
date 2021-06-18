@@ -1,7 +1,7 @@
 import json
 import sys
-sys.path.append(".")
-from Scrapper.Utils.webscrap import scrapper
+import os
+from webscrap import scrapper
 from decimal import Decimal
 import boto3, os
 
@@ -15,3 +15,4 @@ def lambda_handler(event, context):
         for i in range(4):
             data = json.loads(json.dumps(res_list[i]), parse_float=Decimal)
             batch.put_item(Item = data)
+    

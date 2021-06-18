@@ -6,9 +6,11 @@ Description: 'aqi-app SAM Template for aqi-app
 Globals:
   Function:
     Timeout: 180
+    Runtime: python3.8
     Environment:
       Variables:
         TABLE_NAME: SensorsDataTable
+        TZ: Asia/Calcutta
 Resources:
   SensorsDataTable:
     Type: AWS::Serverless::SimpleTable
@@ -22,12 +24,12 @@ Resources:
   ScrapperFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://aqi-app-bucket/dbfe0d8d8fc6feecb5260e39e65c8f5c
-      Policies: AmazonDynamoDBFullAccess
+      FunctionName: Scrapper
+      CodeUri: s3://aqi-app-bucket/da678616aa29cc367bae21b2012f1b51
       Handler: app.lambda_handler
-      Runtime: python3.8
+      Policies: AmazonDynamoDBFullAccess
       Events:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: rate(10 minutes)
+            Schedule: rate(2 hours)

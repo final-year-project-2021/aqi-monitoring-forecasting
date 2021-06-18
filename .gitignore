@@ -1,3 +1,8 @@
 /events
-/Scrapper/Utils/Dependencies
 /.vscode
+!/Scrapper/__init__.py
+!/Scrapper/app.py
+!/Scrapper/webscrap.py
+!/Scrapper/requirements.txt
+/Scrapper/*
+

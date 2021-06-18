@@ -6,10 +6,12 @@ Description: >
 
 Globals:
   Function:    
-    Timeout: 180    
+    Timeout: 180  
+    Runtime: python3.8  
     Environment:
       Variables:
         TABLE_NAME: SensorsDataTable
+        TZ: Asia/Calcutta
 
 Resources:  
   SensorsDataTable:
@@ -17,22 +19,20 @@ Resources:
     Properties:
       PrimaryKey:
         Name: Date-Time
-        Type: String   
+        Type: String        
       TableName: SensorsDataTable
       Tags: 
         Project: aqi-app
 
-  
-
   ScrapperFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: Scrapper/
-      Policies: AmazonDynamoDBFullAccess
-      Handler: app.lambda_handler  
-      Runtime: python3.8    
+      FunctionName: Scrapper
+      CodeUri: Scrapper/      
+      Handler: app.lambda_handler           
+      Policies: AmazonDynamoDBFullAccess 
       Events:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(10 minutes)'
+            Schedule: 'rate(2 hours)'
