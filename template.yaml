@@ -10,10 +10,13 @@ Globals:
     Runtime: python3.8  
     Environment:
       Variables:
-        TABLE_NAME: SensorsDataTable
+        RAW_TABLE_NAME: SensorsDataTable
+        TRANSFORMED_TABLE_NAME: TransformedDataTable
         TZ: Asia/Calcutta
 
 Resources:  
+
+# DynamoDB Tables _______________________________
   SensorsDataTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
@@ -24,6 +27,17 @@ Resources:
       Tags: 
         Project: aqi-app
 
+  TransformedDataTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: Date-Time
+        Type: String        
+      TableName: TransformedDataTable
+      Tags: 
+        Project: aqi-app
+
+# Lambda Functions _______________________________
   ScrapperFunction:
     Type: AWS::Serverless::Function 
     Properties:
@@ -35,4 +49,17 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(2 hours)'
+            Schedule: 'rate(60 minutes)'
+  
+  TransformFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      FunctionName: Transform
+      CodeUri: Transform/      
+      Handler: app.lambda_handler           
+      Policies: AmazonDynamoDBFullAccess 
+      Events:
+        Scheduler:
+          Type: Schedule
+          Properties:
+            Schedule: 'rate(65 minutes)'

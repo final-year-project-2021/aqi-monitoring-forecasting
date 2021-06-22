@@ -5,6 +5,11 @@ Scrapper/*
 !Scrapper/app.py
 !Scrapper/webscrap.py
 !Scrapper/requirements.txt
+Transform/*
+!Transform/__init__.py
+!Transform/app.py
+!Transform/requirements.txt
+!Transform/transform.py
 Forecast/*
 !Forecast/Artefacts/*
 !Forecast/app.py

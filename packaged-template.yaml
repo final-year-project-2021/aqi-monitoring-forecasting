@@ -9,7 +9,8 @@ Globals:
     Runtime: python3.8
     Environment:
       Variables:
-        TABLE_NAME: SensorsDataTable
+        RAW_TABLE_NAME: SensorsDataTable
+        TRANSFORMED_TABLE_NAME: TransformedDataTable
         TZ: Asia/Calcutta
 Resources:
   SensorsDataTable:
@@ -21,15 +22,36 @@ Resources:
       TableName: SensorsDataTable
       Tags:
         Project: aqi-app
+  TransformedDataTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: Date-Time
+        Type: String
+      TableName: TransformedDataTable
+      Tags:
+        Project: aqi-app
   ScrapperFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: Scrapper
-      CodeUri: s3://aqi-app-bucket/da678616aa29cc367bae21b2012f1b51
+      CodeUri: s3://aqi-app-bucket/e14961b294e6a2ad30aa0cd261c4f519
       Handler: app.lambda_handler
       Policies: AmazonDynamoDBFullAccess
       Events:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: rate(2 hours)
+            Schedule: rate(60 minutes)
+  TransformFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Transform
+      CodeUri: s3://aqi-app-bucket/01f87df86ff657b98e3465e59699183e
+      Handler: app.lambda_handler
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        Scheduler:
+          Type: Schedule
+          Properties:
+            Schedule: rate(65 minutes)

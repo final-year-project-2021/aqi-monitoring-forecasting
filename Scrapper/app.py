@@ -7,7 +7,7 @@ import boto3, os
 
 
 dynamodb = boto3.resource("dynamodb")
-table = dynamodb.Table(os.getenv("TABLE_NAME"))
+table = dynamodb.Table(os.getenv("RAW_TABLE_NAME"))
 
 def lambda_handler(event, context):
     res_list = scrapper()

@@ -7,7 +7,7 @@ phases:
 
   pre_build:
     commands:
-      - pip install -r Forecast/requirements.txt  -t Scrapper/
+      - pip install -r Forecast/requirements.txt  -t Forecast/
       - pip install -r Scrapper/requirements.txt  -t Scrapper/
 
   build:
