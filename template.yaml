@@ -62,4 +62,4 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(65 minutes)'
+            Schedule: 'rate(70 minutes)'

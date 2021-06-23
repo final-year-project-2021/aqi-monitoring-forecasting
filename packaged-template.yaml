@@ -35,7 +35,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: Scrapper
-      CodeUri: s3://aqi-app-bucket/e14961b294e6a2ad30aa0cd261c4f519
+      CodeUri: s3://aqi-app-bucket/452855922289c541b185d3e11dfe6571
       Handler: app.lambda_handler
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -54,4 +54,4 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: rate(65 minutes)
+            Schedule: rate(70 minutes)
