@@ -155,4 +155,4 @@ def transform(rawTable, startTime, endTime):
     transformedData['Date-Time'] = aqiData.index
     transformedData['Date-Time'] = transformedData['Date-Time'].astype(str)
 
-    return transformedData[-10:].to_dict('records')
+    return transformedData[-5:].to_dict('records')
