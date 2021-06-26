@@ -15,3 +15,5 @@ Forecast/*
 !Forecast/app.py
 !Forecast/requirements.txt
 !Forecast/__init__.py
+!Forecast/Dockerfile
+!Forecast/forecast.py

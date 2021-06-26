@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/swapnadeep/anaconda3/envs/aqi/bin/python"
+    "python.pythonPath": "/home/swapnadeep/anaconda3/envs/aqi/bin/python",
+    "python.analysis.extraPaths": ["./Forecast"]
 }

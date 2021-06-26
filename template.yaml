@@ -6,7 +6,8 @@ Description: >
 
 Globals:
   Function:    
-    Timeout: 180  
+    Timeout: 420  
+    MemorySize: 2000
     Runtime: python3.8  
     Environment:
       Variables:
@@ -62,4 +63,4 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(70 minutes)'
+            Schedule: 'rate(30 minutes)'
