@@ -5,24 +5,15 @@
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "iam:GetRole",
-                "events:DescribeRule",
-                "dynamodb:*",
-                "iam:CreateRole",
-                "iam:DeleteRole",
-                "iam:AttachRolePolicy",
-                "s3:GetBucketVersioning",
-                "cloudformation:CreateChangeSet",
-                "iam:PutRolePolicy",
-                "s3:GetObject",
-                "iam:PassRole",
-                "iam:DetachRolePolicy",
-                "cloudwatch:*",
-                "iam:DeleteRolePolicy",
+                "iam:*",
+                "events:*",
+                "dynamodb:*",                
+                "s3:*",
+                "cloudformation:*",                
+                "cloudwatch:*",                
                 "codedeploy:*",
                 "lambda:*",
-                "ecr:*",
-                "s3:GetObjectVersion"
+                "ecr:*"                
             ],
             "Resource": "*"
         }

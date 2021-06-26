@@ -7,9 +7,9 @@ from datetime import datetime, timedelta
 from forecast import Forecast
 
 dynamodb = boto3.resource("dynamodb",
-                         aws_access_key_id="AKIAQGQSULZCBGXZDZPD",
-                         aws_secret_access_key="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")
-#aqiTable = dynamodb.Table(os.getenv("TRANSFORMED_TABLE_NAME"))
+                         aws_access_key_id= "",
+                          aws_secret_access_key="")
+aqiTable = dynamodb.Table(os.getenv("TRANSFORMED_TABLE_NAME"))
 aqiTable = dynamodb.Table("TransformedDataTable")
 
 def fetchData(startTime, endTime):
