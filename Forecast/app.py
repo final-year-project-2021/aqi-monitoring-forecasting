@@ -38,12 +38,12 @@ def lambda_handler(event, context):
     for c,i in enumerate(forecasts):
         res = {}
         res["Date-Time"]=(time + timedelta(hours=c+1)).strftime("%Y-%m-%d %H:00:00")
-        res["Forecast-AQI"]=round(i)
+        res["Forecast-AQI"]=int(round(i))
         results.append(res)
     
     with forecastTable.batch_writer() as batch:
         for i in results:
-            data = json.loads(json.dumps(i), parse_float=Decimal)
+            #data = json.loads(json.dumps(i), parse_float=Decimal)
             batch.put_item(Item = data)
 
 
