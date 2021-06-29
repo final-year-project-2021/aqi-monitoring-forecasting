@@ -8,4 +8,20 @@ source_md5 = ""
 packagetype = "Zip"
 functions = ["ScrapperFunction"]
 
+[function_build_definitions.03840398-71fb-463d-821a-da25ac448bd2]
+codeuri = "/home/swapnadeep/Documents/Final_Year_Project/aqi-app/Transform"
+runtime = "python3.8"
+source_md5 = ""
+packagetype = "Zip"
+functions = ["TransformFunction"]
+
+[function_build_definitions.a6d65653-96ed-4688-84bf-f029a64e5bbd]
+packagetype = "Image"
+functions = ["ForecastFunction"]
+
+[function_build_definitions.a6d65653-96ed-4688-84bf-f029a64e5bbd.metadata]
+Dockerfile = "Dockerfile"
+DockerContext = "/home/swapnadeep/Documents/Final_Year_Project/aqi-app/Forecast"
+DockerTag = "forecast"
+
 [layer_build_definitions]
