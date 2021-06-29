@@ -7,5 +7,5 @@ COPY Artefacts ./Artefacts
 RUN ls
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt -t .
-RUN python -c "import tensorflow as tf"
+RUN python -c "import tensorflow as tf; import pickle"
 CMD ["app.lambda_handler"]
