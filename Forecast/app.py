@@ -10,7 +10,7 @@ from decimal import Decimal
 dynamodb = boto3.resource("dynamodb")
 
 aqiTable = dynamodb.Table(os.getenv("TRANSFORMED_TABLE_NAME"))
-forecastTable = dynamodb.Table("FORECAST_TABLE_NAME")
+forecastTable = dynamodb.Table(os.getenv("FORECAST_TABLE_NAME"))
 
 def fetchData(startTime, endTime):
     response = aqiTable.scan(

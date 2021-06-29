@@ -60,7 +60,7 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(60 minutes)'
+            Schedule: 'rate(30 minutes)'
   
   TransformFunction:
     Type: AWS::Serverless::Function 
@@ -74,7 +74,7 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(30 minutes)'
+            Schedule: 'rate(35 minutes)'
   
   ForecastFunction:
     Type: AWS::Serverless::Function 
@@ -88,7 +88,7 @@ Resources:
         Scheduler:
           Type: Schedule
           Properties:
-            Schedule: 'rate(30 minutes)'   
+            Schedule: 'rate(35 minutes)'   
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: ./Forecast
