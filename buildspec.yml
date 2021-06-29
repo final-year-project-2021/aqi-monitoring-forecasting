@@ -15,9 +15,10 @@ phases:
   build:
     commands:
       - >
-        sam package --template-file template.yaml --s3-bucket aqi-app-bucket 
+        sam package --template-file template.yaml 
+        --s3-bucket aqi-app-bucket 
         --output-template-file packaged-template.yaml 
-        --image-repository 013997727300.dkr.ecr.ap-south-1.amazonaws.com/forecast
+        --image-repository ForecastFunction=013997727300.dkr.ecr.ap-south-1.amazonaws.com/forecast
         
 artifacts:
   files:
