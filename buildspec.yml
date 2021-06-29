@@ -9,10 +9,15 @@ phases:
     commands:      
       - pip install -r Scrapper/requirements.txt  -t Scrapper/
       - pip install -r Transform/requirements.txt  -t Transform/
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 013997727300.dkr.ecr.ap-south-1.amazonaws.com
+      - sam build
 
   build:
     commands:
-      - sam package --template-file template.yaml --s3-bucket aqi-app-bucket --output-template-file packaged-template.yaml
+      - >
+        sam package --template-file template.yaml --s3-bucket aqi-app-bucket 
+        --output-template-file packaged-template.yaml 
+        --image-repositories ForecastFunction=013997727300.dkr.ecr.ap-south-1.amazonaws.com/forecast
         
 artifacts:
   files:

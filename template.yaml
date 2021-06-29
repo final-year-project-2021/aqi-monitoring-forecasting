@@ -13,10 +13,10 @@ Globals:
       Variables:
         RAW_TABLE_NAME: SensorsDataTable
         TRANSFORMED_TABLE_NAME: TransformedDataTable
+        FORECAST_TABLE_NAME: ForecastTable
         TZ: Asia/Calcutta
 
 Resources:  
-
 # DynamoDB Tables _______________________________
   SensorsDataTable:
     Type: AWS::Serverless::SimpleTable
@@ -35,6 +35,16 @@ Resources:
         Name: Date-Time
         Type: String        
       TableName: TransformedDataTable
+      Tags: 
+        Project: aqi-app
+
+  ForecastTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: Date-Time
+        Type: String        
+      TableName: ForecastTable
       Tags: 
         Project: aqi-app
 
@@ -64,3 +74,21 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: 'rate(30 minutes)'
+  
+  ForecastFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      FunctionName: Forecast
+      PackageType: Image
+      Policies:        
+        - AWSLambdaExecute 
+        - AmazonDynamoDBFullAccess 
+      Events:           
+        Scheduler:
+          Type: Schedule
+          Properties:
+            Schedule: 'rate(30 minutes)'   
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./Forecast
+      DockerTag: forecast-image
