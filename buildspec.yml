@@ -17,7 +17,7 @@ phases:
       - >
         sam package --template-file template.yaml --s3-bucket aqi-app-bucket 
         --output-template-file packaged-template.yaml 
-        --image-repositories ForecastFunction=013997727300.dkr.ecr.ap-south-1.amazonaws.com/forecast
+        --image-repository 013997727300.dkr.ecr.ap-south-1.amazonaws.com/forecast
         
 artifacts:
   files:
