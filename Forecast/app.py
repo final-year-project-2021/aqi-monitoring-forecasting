@@ -42,9 +42,9 @@ def lambda_handler(event, context):
         results.append(res)
     
     with forecastTable.batch_writer() as batch:
-        for i in results:
+        for item in results:
             #data = json.loads(json.dumps(i), parse_float=Decimal)
-            batch.put_item(Item = data)
+            batch.put_item(Item = item)
 
 
 
